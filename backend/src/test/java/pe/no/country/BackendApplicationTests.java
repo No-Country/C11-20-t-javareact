@@ -1,10 +1,10 @@
-package C1120tjavareact.C1120tjavareact;
+package pe.no.country;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class C1120TJavareactApplicationTests {
+class BackendApplicationTests {
 
 	@Test
 	void contextLoads() {
