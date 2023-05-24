@@ -36,10 +36,10 @@ export default function RootLayout({ children }) {
                   </svg>
                 </li>
                 <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200'>
-                  <a>Registrarse</a>
+                  <a href='/register'>Registrarse</a>
                 </li>
                 <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200'>
-                  <a>Ingresar</a>
+                  <a href='/login'>Ingresar</a>
                 </li>
                 <li>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
