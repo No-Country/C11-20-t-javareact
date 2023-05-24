@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
             </li>
             <hr></hr>
             <li className='py-2 px-1 my-1 bg-sky-200 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-sky-200'>
-              <a>Servicios</a>
+              <Link href={'/components/Servicios'}>Servicios</Link>
             </li> 
             <hr></hr>
             <li className='py-2 px-1 my-1 bg-sky-200 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-sky-200'>

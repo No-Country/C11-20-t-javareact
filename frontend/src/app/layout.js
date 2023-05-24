@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -20,7 +21,11 @@ export default function RootLayout({ children }) {
             <nav className="flex flex-row items-center">
               <ul className="flex flex-row items-center justify-start space-x-3">
                 <li>LOGO</li>
-                <li className='italic bg-cyan-200 px-2 py-1 rounded-sm'>Depil & Esthetic</li>
+                <li className='italic bg-cyan-200 px-2 py-1 rounded-sm'>
+                  <Link href={'/'}>
+                    Depil & Esthetic
+                  </Link>
+                  </li>
               </ul>
             </nav>  
             <nav>

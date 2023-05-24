@@ -1,5 +1,6 @@
 "use client"; 
 
+import axios from 'axios';
 import Link from 'next/link';
 import React, { useState } from 'react'
 
@@ -9,12 +10,22 @@ export default function Home() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  // const [email1, setEmail1] = useState("")
-  // const [password1, setPassword1] = useState("")
-  // const [name, setName] = useState("")
+  const [loginStatus, setLoginStatus ] = useState('')
 
-  const handleSubmit = (e) => {
+
+  const login = (e) => {
     e.preventDefault();
+    axios.post('http://localhost:', {
+      email: email,
+      // username: username,
+      password: password
+    }).then(response => {
+      if (response.data.message) {
+        setLoginStatus(response.data.message)
+      } else {
+        setLoginStatus(response.data[0].email);
+      }
+    })
     console.log(email);
   }
 
@@ -30,7 +41,7 @@ export default function Home() {
           alt='logo'
           />
       </div>
-      <form onClick={(e) => handleSubmit(e)}>
+      <form onClick={(e) => login(e)}>
         <p htmlFor='email' className='text-left font-serif ml-4' >Email: </p>
         <input 
           type="email" 
