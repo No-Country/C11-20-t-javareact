@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="bg-cyan-200 grid grid-cols-10 gap-2 min-h-screen p-2">
-      <div className="bg-sky-100 rounded-xl p-2 col-span-2  border-purple-950">
+    <main className="bg-slate-100 grid grid-cols-10 gap-2 min-h-screen p-2">
+      <div className="bg-slate-200 rounded-sm p-2 col-span-2  border-purple-950">
         <nav>
           <ul>
             <li className='py-2 px-1 my-1 bg-sky-200 rounded-lg text-blue-600 hover:bg-blue-600 hover:text-sky-200'>
