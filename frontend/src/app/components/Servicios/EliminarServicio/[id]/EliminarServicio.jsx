@@ -2,7 +2,7 @@
 import { useState } from "react";
 import FormCrearServicio from '../../CrearServicio/FormCrearServicio';
 
-export default function ActualizarServicio ({dataServicio}) {
+export default function EliminarServicio ({dataServicio}) {
   const [submitting, setSubmitting] = useState(false);
   const [servicio, setServicio] = useState(
     {
@@ -13,14 +13,14 @@ export default function ActualizarServicio ({dataServicio}) {
     }
   );
 
-  const actualizaServicio = async (e) => {
+  const eliminarServicio = async (e) => {
     e.preventDefault();
     setSubmitting(true);
   
     try {
-      let response = await fetch('http://localhost:8085/servicio/update/'+servicio.id,
+      let response = await fetch('http://localhost:8085/servicio/delete/'+servicio.id,
       {
-        method: 'PUT',
+        method: 'DELETE',
         headers: {'Content-Type': 'application/json'}, 
         body: JSON.stringify(servicio)
       })
@@ -37,11 +37,11 @@ export default function ActualizarServicio ({dataServicio}) {
   return (
 
     <FormCrearServicio
-    type="Modificar"
+    type="Eliminar"
     servicio={servicio}
     setServicio={setServicio}
     submitting={submitting}
-    handleSubmit={actualizaServicio}
+    handleSubmit={eliminarServicio}
 
   />
   )

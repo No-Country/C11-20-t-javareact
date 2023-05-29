@@ -1,5 +1,7 @@
+import EliminarServicio from "./EliminarServicio";
+
 const fetchServicio = (id) => {
-  return fetch('https://dummyjson.com/products/'+id)
+  return fetch('http://localhost:8085/servicio/detail/'+id)
   .then( resp => resp.json())
   .catch( error => console.log(error))
 }
@@ -10,6 +12,8 @@ export default async function FetchServicio ({params}) {
   console.log(dataServicio);
 
     return (
-    <h1>Cambiar estado servicio</h1>
+      <EliminarServicio
+        dataServicio={dataServicio}
+		  />
     )
 }

@@ -2,7 +2,7 @@
 import ActualizarServicio from "./ActualizarServicio";
 
 const fetchServicio = (id) => {
-  return fetch('https://dummyjson.com/products/'+id)
+  return fetch('http://localhost:8085/servicio/detail/'+id)
   .then( resp => resp.json())
   .catch( error => console.log(error))
 }
