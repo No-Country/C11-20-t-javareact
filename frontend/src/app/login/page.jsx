@@ -2,7 +2,8 @@
 
 import axios from 'axios';
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
 
 
 
@@ -12,19 +13,50 @@ export default function Home() {
   const [password, setPassword] = useState("")
   const [loginStatus, setLoginStatus ] = useState('')
 
-
-  const login = (e) => {
+ 
+  useEffect(() => {
+    localStorage.clear()
+  }, [])
+  const login = (e, email, password) => {
     e.preventDefault();
-    axios.post('http://localhost:', {
-      email: email,
-      // username: username,
-      password: password
-    }).then(response => {
-      if (response.data.message) {
-        setLoginStatus(response.data.message)
-      } else {
-        setLoginStatus(response.data[0].email);
+    // console.log(email);
+    // console.log(password);
+    // let info = {
+    //   "correo":email,
+    //   "clave": password
+    // };
+
+    axios.post('http://localhost:8085/auth/login', 
+    {
+      "correo":email,
+      "clave": password
+    }).then(res => {
+      // if (response.data.message) {
+      //   setLoginStatus(response.data.message)
+      // } else {
+      //   setLoginStatus(response.data[0].email);
+      // }
+     
+      if (res.data.token) {
+        localStorage.setItem('token', JSON.stringify(res.data.token));
+          // window.open("/");
+        location.replace('/')
+
+        } 
+        else {
+          console.log('si');
+          let denegado = document.getElementById('accesod');
+          denegado.setAttribute('class', 'font-serif text-sm text-red-500');
+          // denegado.innerText = 'Usuario no encontrado.'
+        
+        // setLoginStatus(console.log() )
       }
+
+    }).catch((err) => {
+      console.log(err);
+      // let denegado = document.getElementById('accesod')
+      // denegado.setAttribute('class', 'font-serif text-sm text-red-500')
+      // denegado.innerText = 'Usuario no autorizado.'
     })
     console.log(email);
   }
@@ -41,7 +73,7 @@ export default function Home() {
           alt='logo'
           />
       </div>
-      <form onClick={(e) => login(e)}>
+      <form onClick={(e) => login(e, email, password)}>
         <p htmlFor='email' className='text-left font-serif ml-4' >Email: </p>
         <input 
           type="email" 
@@ -55,7 +87,7 @@ export default function Home() {
             email == 'repetido@gmail.com'? <p className=' text-red-600 text-xs font-serif text-left'>Ya existe otro usuario con esta cuenta</p> :
             <br />
           }
-        <p for='password'className='text-left font-serif ml-4'>Password: </p>
+        <p htmlFor='password'className='text-left font-serif ml-4'>Password: </p>
         <input 
           type="password" 
           id="password" 
@@ -84,6 +116,9 @@ export default function Home() {
         <button className='border rounded px-24 py-2 bg-green-300 border-gray-400 hover:bg-green-200 text-white cursor-pointer'><strong>Login</strong></button>
 
       }
+      <p id="accesop" className='font-serif'></p>
+      <p id="accesod" className='font-serif text-sm text-red-500 hidden'>Usuario no encontrado</p>
+
       </form><br />
       <p className='font-serif text-lg mt-3'>No tienes una cuenta todavía? <Link href="/register" className='text-center text-blue-900'>Regístrate aquí</Link></p>
 
