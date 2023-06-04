@@ -1,10 +1,11 @@
 package pe.no.country.repository;
+
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import pe.no.country.entity.Estilista;
+import pe.no.country.entity.Categoria;
 
 @Repository
-public interface EstilistaRepository extends JpaRepository<Estilista, Integer> {
-    
+public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
+
 }
