@@ -8,30 +8,33 @@ export default function CrearServicio () {
 	const router = useRouter();
 	const [submitting, setSubmitting] = useState(false);
 	const [servicio, setServicio] = useState(
-			{
-				nombre: '',
-				descripcion: '',
-				precio: 0,
-			})
-	
-	
+		{
+			nombreservicio: '',
+			descripcion: '',
+			costo: 0,
+		}
+	)
 
-	const CrearServicio = async (e) => {
+	
+	const crearServicio = async (e) => {
 		e.preventDefault();
 		setSubmitting(true);
+		console.log(servicio,JSON.stringify(servicio))
 
 		try {
-			response = await fetch('/api/servicio/new',
+			response = await fetch('http://localhost:8085/servicio/create',
 			{
 				method: 'POST',
 				headers: {'Content-Type': 'application/json'}, 
 				body: JSON.stringify(servicio)
 			})
-			if(response.ok) {
+			console.log(response)
+			if(response.mensaje) {
+				console.log(response.mensaje);
 				router.push('/components/Servicios');
 			}
 		} catch (error) {
-			console.error(error);
+			console.error('error:', error);
 		} finally {
 			setSubmitting(false);
 		}
@@ -43,7 +46,7 @@ export default function CrearServicio () {
 			servicio={servicio}
 			setServicio={setServicio}
 			submitting={submitting}
-			handleSubmit={CrearServicio}
+			handleSubmit={crearServicio}
 
 		/>
 	)
