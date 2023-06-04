@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class ClienteController {
     @Autowired
     ClienteService clienteService;
 
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/lista")
     public ResponseEntity<List<Cliente>> list() {
         List<Cliente> list = clienteService.list();
@@ -37,7 +38,7 @@ public class ClienteController {
     }
 
     // @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Cliente clienteEnt) {
 
@@ -45,12 +46,12 @@ public class ClienteController {
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
 
         Cliente cliente = new Cliente(clienteEnt.getNombre(), clienteEnt.getApellido(), clienteEnt.getTipodocumento(),
-                clienteEnt.getNumerodocumento(), clienteEnt.getCelular());
+                clienteEnt.getNumerodocumento(), clienteEnt.getTelefono());
         clienteService.save(cliente);
         return new ResponseEntity(new Mensaje("cliente creado"), HttpStatus.OK);
     }
 
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody Cliente clienteEnt) {
         if (!clienteService.existsById(id))
@@ -64,12 +65,12 @@ public class ClienteController {
         cliente.setApellido(clienteEnt.getApellido());
         cliente.setTipodocumento(clienteEnt.getTipodocumento());
         cliente.setNumerodocumento(clienteEnt.getNumerodocumento());
-        cliente.setCelular(clienteEnt.getCelular());
+        cliente.setTelefono(clienteEnt.getTelefono());
         clienteService.save(cliente);
         return new ResponseEntity(new Mensaje("cliente actualizado"), HttpStatus.OK);
     }
 
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!clienteService.existsById(id))

@@ -9,6 +9,6 @@ import pe.no.country.entity.Venta;
 @Repository
 public interface VentaRepository extends JpaRepository<Venta, Integer> {
 
-	@Query("SELECT u FROM Venta u WHERE u.recepcion.idrecepcion=?1")
-	List<Venta> ventasByIdRecepcion(int idrecepcion);
+	@Query("SELECT u FROM Venta u WHERE u.cita.idcita=?1")
+	List<Venta> ventasByIdCita(int idcita);
 }

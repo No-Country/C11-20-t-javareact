@@ -23,28 +23,26 @@ public class Cliente {
     @Column(name = "apellido", length = 20, nullable = true)
     private String apellido;
 
-    @Column(name = "estado", nullable = true)
-    private boolean estado;
 
     @Column(name = "tipodocumento", length = 20, nullable = true)
     private String tipodocumento;
 
-    @Column(name = "numerodocumento", nullable = true)
+    @Column(name = "numdocumento", nullable = true)
     public int numerodocumento;
 
-    @Column(name = "celular", nullable = true)
-    public int celular;
+    @Column(name = "telefono", nullable = true)
+    public int telefono;
 
     public Cliente() {
     }
 
     public Cliente(String nombre, String apellido, String tipodocumento,
-            int numerodocumento, int celular) {
+            int numerodocumento, int telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipodocumento = tipodocumento;
         this.numerodocumento = numerodocumento;
-        this.celular = celular;
+        this.telefono = telefono;
     }
 
     public static long getSerialversionuid() {
@@ -75,13 +73,7 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public boolean isEstado() {
-        return estado;
-    }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
 
     public String getTipodocumento() {
         return tipodocumento;
@@ -99,12 +91,12 @@ public class Cliente {
         this.numerodocumento = numerodocumento;
     }
 
-    public int getCelular() {
-        return celular;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setCelular(int celular) {
-        this.celular = celular;
+    public void setTelefono(int celular) {
+        this.telefono = celular;
     }
 
 }

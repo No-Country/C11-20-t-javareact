@@ -105,17 +105,6 @@ public class Venta {
 
 
 
-//	public int getIdrecepcion() {
-//		return idrecepcion;
-//	}
-//
-//	public void setIdrecepcion(int idrecepcion) {
-//		this.idrecepcion = idrecepcion;
-//	}
-
-
-	
-	
 	
 }
 

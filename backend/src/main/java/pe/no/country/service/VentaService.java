@@ -20,8 +20,8 @@ public class VentaService {
 		return ventaRepository.findAll();
 	}
 	
-	public List<Venta> listaVentasIdRecep(int idrecepcion) {
-		return ventaRepository.ventasByIdRecepcion(idrecepcion);
+	public List<Venta> listaVentasIdCita(int idcita) {
+		return ventaRepository.ventasByIdCita(idcita);
 	}
 
 	public Optional<Venta> getOne(int id) {
