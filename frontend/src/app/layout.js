@@ -90,11 +90,11 @@ const getAny = () => {
       </head>
       <body className={inter.className}>
         <header>
-          <div className='grid grid-cols-2 bg-sky-50 py-2 px-2 font-sans'>
+          <div className='grid grid-cols-2 bg-cyan-100 py-2 px-2 font-sans'>
             <nav className="flex flex-row items-center">
               <ul className="flex flex-row items-center justify-start space-x-3">
                 <li>LOGO</li>
-                <li className='italic font-semibold bg-sky-200 px-2 py-1.5 rounded-sm'>
+                <li className='italic bg-cyan-200 px-2 py-1 rounded-sm'>
                   <Link href={'/'}>
                     Depil & Esthetic
                   </Link>
@@ -113,7 +113,6 @@ const getAny = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" />
                   </svg>
                 </li>
-<<<<<<< HEAD
                 {
                   isLogged == false?
                   <>
@@ -125,16 +124,6 @@ const getAny = () => {
                   </li>
                   <li>
                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-=======
-                <li className='py-1 px-1.5 my-1 cursor-pointer bg-blue-600 text-white rounded hover:bg-slate-300 hover:text-black'>
-                  <a href='/register'>Registrarse</a>
-                </li>
-                <li className='py-1 px-1.5 my-1 cursor-pointer bg-blue-600 text-white rounded hover:bg-slate-300 hover:text-black'>
-                  <a href='/login'>Ingresar</a>
-                </li>
-                <li>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
->>>>>>> d2a74b11c2ffdf560c74b8955e61263b684977bd
                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   </li>
