@@ -41,9 +41,9 @@ export default function Home() {
 // }
 
  
-  // useEffect(() => {
-  //   localStorage.clear()
-  // }, [])
+  useEffect(() => {
+    localStorage.clear()
+  }, [])
 
 
 
@@ -139,7 +139,7 @@ export default function Home() {
             email == 'repetido@gmail.com'? <p className=' text-red-600 text-xs font-serif text-left'>Ya existe otro usuario con esta cuenta</p> :
             <br />
           } */}
-        <p htmlFor='password'className='text-left font-serif font-bold'>Password: </p>
+        <p htmlFor='password'className='text-left font-serif font-bold mt-3'>Password: </p>
         <input 
           type="password" 
           id="password" 
