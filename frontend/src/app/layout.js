@@ -102,24 +102,24 @@ const getAny = () => {
               </ul>
             </nav>  
             <nav>
-              <ul className="flex flex-row items-center justify-end space-x-3">
+              <ul className="flex flex-row items-center justify-end space-x-3 pb-0">
                 <li>
-                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mt-3">
                    <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                   </svg>
                 </li>
                 <li>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mt-3">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" />
                   </svg>
                 </li>
                 {
                   isLogged == false?
                   <>
-                  <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200'>
+                  <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200 mt-2'>
                    <a href='/register'>Registrarse</a>
                   </li>
-                  <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200'>
+                  <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200 mt-2'>
                     <a href='/login'>Ingresar</a>
                   </li>
                   <li>
@@ -130,12 +130,12 @@ const getAny = () => {
                   </>
                   :
                   <>
-                  <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200'>
+                  <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200 -mb-[8px]'>
                    <a href='/login' onClick={deleteToken} onLog>Cerrar sesion</a>
                   </li>
                   <li className='py-1 px-1 my-1 cursor-pointer bg-transparent rounded-sm text-blue-600 hover:text-sky-200'>
                    <img 
-                    className='h-10 w-10 rounded-full' 
+                    className='h-9 w-9 rounded-full -mb-[8px]' 
                     src='https://thumbs.dreamstime.com/b/icono-de-vector-depilaci%C3%B3n-trazo-editable-s%C3%ADmbolo-lineal-para-uso-en-medios-impresos-con-logotipo-aplicaciones-web-y-m%C3%B3viles-186790025.jpg' 
                     alt='logo' />
                   </li>
