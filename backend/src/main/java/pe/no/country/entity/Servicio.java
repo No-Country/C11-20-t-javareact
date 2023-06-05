@@ -44,13 +44,14 @@ public class Servicio implements Serializable {
 	public Servicio() {
 	}
 
-	public Servicio(int idservicio, String descripcion, String nombre, double precio, boolean estado) {
+	public Servicio(String descripcion, String nombre, double precio, boolean estado,Date fechacreacion) {
 
-		this.idservicio = idservicio;
+		
 		this.descripcion = descripcion;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.estado = estado;
+		this.fechacreacion=fechacreacion;
 	}
 
 	public Servicio(String descripcion, String nombre, double precio, boolean estado) {

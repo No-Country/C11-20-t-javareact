@@ -45,7 +45,7 @@ public class ServicioController {
         if (StringUtils.isBlank(servicioEnt.getDescripcion()))
             return new ResponseEntity(new Mensaje("La descripción es obligatorio"), HttpStatus.BAD_REQUEST);
 
-        Servicio servicio = new Servicio( servicioEnt.getDescripcion(),servicioEnt.getNombre(), servicioEnt.getPrecio(),servicioEnt.isEstado());
+        Servicio servicio = new Servicio( servicioEnt.getDescripcion(),servicioEnt.getNombre(), servicioEnt.getPrecio(),servicioEnt.isEstado(),servicioEnt.getFechacreacion());
         servicioService.save(servicio);
         return new ResponseEntity(new Mensaje("servicio creado"), HttpStatus.OK);
     }
