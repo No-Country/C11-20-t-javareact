@@ -31,14 +31,15 @@ public class Cita {
 	@Column(name = "estado", nullable = true)
 	private String estado;
 	
-	@Column(name = "fechaprogramada")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "fechaprogramada",columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP" )
+	@CreationTimestamp
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaprogramada;
 	
 	@Column(name = "fecharegistro",columnDefinition ="TIMESTAMP DEFAULT CURRENT_TIMESTAMP" )
 	@CreationTimestamp
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	private Date fecharegistro;
+	private Date fecharegistrocita;
 	
 	@Column(name = "costototalservicios", scale = 2, nullable = true)
 	private double costototalservicios;
@@ -52,15 +53,15 @@ public class Cita {
 	private Estilista estilista;
 
 
-	
+	public Cita() {};
 
-	public Cita(int idcita, String observacion, String estado, Date fecharegistro, double costototalservicios,
+	public Cita( String observacion, String estado, Date fechaprogramada,Date fecharegistrocita, double costototalservicios,
 			Cliente cliente, Estilista estilista) {
 		
-		this.idcita = idcita;
+		this.fecharegistrocita=fecharegistrocita;
 		this.observacion = observacion;
 		this.estado = estado;
-		this.fecharegistro = fecharegistro;
+		this.fechaprogramada = fechaprogramada;
 		this.costototalservicios = costototalservicios;
 		this.cliente = cliente;
 		this.estilista = estilista;
@@ -98,13 +99,30 @@ public class Cita {
 		this.fechaprogramada = fechaprogramada;
 	}
 
-	public Date getFecharegistro() {
-		return fecharegistro;
+	public Date getFecharegistrocita() {
+		return fecharegistrocita;
 	}
 
-	public void setFecharegistro(Date fecharegistro) {
-		this.fecharegistro = fecharegistro;
+	public void setFecharegistrocita(Date fecharegistrocita) {
+		this.fecharegistrocita = fecharegistrocita;
 	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Estilista getEstilista() {
+		return estilista;
+	}
+
+	public void setEstilista(Estilista estilista) {
+		this.estilista = estilista;
+	}
+
 
 	public double getCostototalservicios() {
 		return costototalservicios;

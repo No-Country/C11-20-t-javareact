@@ -83,4 +83,10 @@ public class EstilistaController {
         Estilista estilista = estilistaService.getOne(id).get();
         return new ResponseEntity(estilista, HttpStatus.OK);
     }
+    
+    @GetMapping("/nombres")
+    public ResponseEntity<String> getNombresEstilistas(){
+    	List<String> nombresEstilistas=estilistaService.estilistasNombres();
+    	return new ResponseEntity(nombresEstilistas, HttpStatus.OK);
+    }
 }

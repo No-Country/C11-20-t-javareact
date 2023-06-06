@@ -36,4 +36,7 @@ public class EstilistaService {
     public boolean existsById(int id) {
         return estilistaRepository.existsById(id);
     }
+    public List<String> estilistasNombres(){
+    	return estilistaRepository.obtenerNombresEstilistas();
+    }
 }
