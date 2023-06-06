@@ -1,8 +1,13 @@
-
+'use client'
 import ActualizarServicio from "./ActualizarServicio";
 
 const fetchServicio = (id) => {
-  return fetch('http://localhost:8085/servicio/detail/'+id)
+  const token =  sessionStorage.getItem("token");
+  return fetch('http://localhost:8085/servicio/detail/'+id,
+  {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 
+  })
   .then( resp => resp.json())
   .catch( error => console.log(error))
 }
