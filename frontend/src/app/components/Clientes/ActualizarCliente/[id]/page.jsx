@@ -1,9 +1,9 @@
 'use client'
-import ActualizarServicio from "./ActualizarServicio";
+import ActualizarCliente from "./ActualizarCliente";
 
 const fetchServicio = (id) => {
   const token =  JSON.parse(localStorage.getItem('token'));
-  return fetch('http://localhost:8085/servicio/detail/'+id,
+  return fetch('http://localhost:8085/cliente/detail/'+id,
   {
     method: 'GET',
     headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 
@@ -14,12 +14,12 @@ const fetchServicio = (id) => {
 
 export default async function FetchServicio ({params}) {
 	const {id} = params;
-	const dataServicio = await fetchServicio(id);
-  console.log(dataServicio);
+	const dataCliente = await fetchServicio(id);
+  console.log('dataCliente',dataCliente);
 
     return (
-      <ActualizarServicio
-        dataServicio={dataServicio}
+      <ActualizarCliente
+        dataCliente={dataCliente}
 		  />
     )
 }

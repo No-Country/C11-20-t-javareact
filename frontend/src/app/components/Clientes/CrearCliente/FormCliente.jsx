@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
 
-const FormCrearServicio = ({type, servicio, setServicio, submitting, handleSubmit, displayOnly}) => {
-
+const FormCliente = ({type, cliente, setCliente, submitting, handleSubmit, displayOnly}) => {
+  console.log('cliente',cliente)
   return (
   <main className="bg-blue-50 grid grid-cols-10 gap-2 min-h-screen p-2">
     <div className="bg-slate-200 rounded-sm p-2 col-span-2">
@@ -13,17 +13,19 @@ const FormCrearServicio = ({type, servicio, setServicio, submitting, handleSubmi
         <h2 className="text-lg">{type} Servicio</h2>
       </div>
       <hr className="bg-blue-300"></hr>
+
       <div className="bg-white col-span-8 w-full px-4 py-2"> 
         <form onSubmit={(e) => handleSubmit(e)} className="p-5 mt-5 w-full flex flex-wrap gap-4 border border-slate-100">
-          <div className="flex flex-col w-full">
+          
+          <div className="flex flex-col w-[40%]">
             <label className="block">
               <span className="text-sm text-satoshi font-semibold text-gray-700">
                 Nombre
               </span>    
             </label> 
-            <input value={servicio.nombre} 
-              onChange={(e)=> setServicio({ ...servicio, nombre: e.target.value})}
-              placeholder="Nombre del Servicio..."
+            <input value={cliente.nombre} 
+              onChange={(e)=> setCliente({ ...cliente, nombre: e.target.value})}
+              placeholder="Nombre..."
               type="text"
               required
               disabled={displayOnly}
@@ -31,55 +33,92 @@ const FormCrearServicio = ({type, servicio, setServicio, submitting, handleSubmi
             >
             </input>
           </div>
-          <div className="flex flex-col w-full">
+
+          <div className="flex flex-col w-[40%]">
             <label>
               <span className="text-sm text-satoshi font-semibold text-gray-700">
-                Descripcion
+                Apellido
               </span>
             </label>
-            <textarea value={servicio.descripcion} 
-              onChange={(e)=> setServicio({ ...servicio, descripcion: e.target.value})}
-              placeholder="Descripcion del Servicio..."
+            <input value={cliente.apellido} 
+              onChange={(e)=> setCliente({ ...cliente, apellido: e.target.value})}
+              placeholder="Apellido..."
+              type="text"
               required
               disabled={displayOnly}
               className="invalid:border-red-500 bg-slate-50 text-sm border rounded border-slate-200 px-2 py-1"
             >
-            </textarea>
+            </input>
           </div>
-          <div className="flex flex-col w-[20%]">
+
+          <div className="flex flex-col w-[30%]">
             <label>
               <span className="text-sm text-satoshi font-semibold text-gray-700">
-                Precio $
+                Tipo Documento
               </span>
             </label> 
-            <input value={servicio.precio} 
-              onChange={(e)=> setServicio({ ...servicio, precio: parseInt(e.target.value)})}
-              placeholder="Precio del Servicio..."
+            <input value={cliente.tipodocumento} 
+              onChange={(e)=> setCliente({ ...cliente, tipodocumento: e.target.value})}
+              placeholder="Tipo de documento..."
+              type="text"
               required
               disabled={displayOnly}
-              type="number"
               className="invalid:border-red-500 bg-slate-50 text-sm border rounded border-slate-200 px-2 py-1 w-full"
             >
             </input>
           </div>
 
-          <div className="flex flex-col w-[20%]">
-            <label className="block">
+          <div className="flex flex-col w-[30%]">
+            <label>
               <span className="text-sm text-satoshi font-semibold text-gray-700">
-                Estado
-              </span>    
+                Documento
+              </span>
             </label> 
-            <select value={servicio.estado}
-              onChange={(e)=> setServicio({ ...servicio, estado: e.target.value})}
+            <input value={cliente.numerodocumento} 
+              onChange={(e)=> setCliente({ ...cliente, numerodocumento: e.target.value})}
+              placeholder="Numero de documento..."
               required
               disabled={displayOnly}
-              className="invalid:border-red-500 bg-slate-50 text-sm border rounded border-slate-200 px-2 py-1"            
+              type="text"
+              className="invalid:border-red-500 bg-slate-50 text-sm border rounded border-slate-200 px-2 py-1 w-full"
             >
-              <option value={true}>Activo</option>
-              <option value={false}>Inactivo</option>
-            </select>
+            </input>
+          </div>
+
+          <div className="flex flex-col w-[30%]">
+            <label>
+              <span className="text-sm text-satoshi font-semibold text-gray-700">
+                Telefono
+              </span>
+            </label> 
+            <input value={cliente.telefono} 
+              onChange={(e)=> setCliente({ ...cliente, telefono: e.target.value})}
+              placeholder="Numero de telefono..."
+              required
+              disabled={displayOnly}
+              type="text"
+              className="invalid:border-red-500 bg-slate-50 text-sm border rounded border-slate-200 px-2 py-1 w-full"
+            >
+            </input>
           </div>
         
+          <div className="flex flex-col w-[40%]">
+            <label>
+              <span className="text-sm text-satoshi font-semibold text-gray-700">
+                Correo
+              </span>
+            </label> 
+            <input value={cliente.correo} 
+              onChange={(e)=> setCliente({ ...cliente, correo: e.target.value})}
+              placeholder="Correo electronico..."
+              required
+              disabled={displayOnly}
+              type="email"
+              className="invalid:border-red-500 bg-slate-50 text-sm border rounded border-slate-200 px-2 py-1 w-full"
+            >
+            </input>
+          </div>
+
           {/* { (type === 'Borrar') &&
           <div className="flex flex-col w-[30%]">
             <label>
@@ -99,7 +138,7 @@ const FormCrearServicio = ({type, servicio, setServicio, submitting, handleSubmi
           } */}
 
           <div className='flex flex-row justify-end mx-3 mb-5 gap-4 items-center w-full flex-nowrap'>
-            <Link href={'/components/Servicios'}>
+            <Link href={'/components/Clientes'}>
               <button type='button' 
                 className="bg-red-600 text-white text-sm px-3 py-1.5 cursor-pointer rounded  hover:bg-slate-300 hover:text-black">
                 Cancelar
@@ -119,4 +158,4 @@ const FormCrearServicio = ({type, servicio, setServicio, submitting, handleSubmi
 
 }
 
-export default FormCrearServicio;
+export default FormCliente;

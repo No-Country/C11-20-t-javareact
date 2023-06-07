@@ -1,43 +1,44 @@
 'use client'
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import FormCrearServicio from './FormCrearServicio';
+import FormCliente from './FormCliente';
 
 export default function CrearServicio () {
 	const router = useRouter();
 	const [submitting, setSubmitting] = useState(false);
-	const [servicio, setServicio] = useState(
+	const [cliente, setCliente] = useState(
 		{
 			nombre: '',
-			descripcion: '',
-			precio: 0,
-			estado: true,
+			apellido: '',
+			tipodocumento: '',
+			numerodocumento: '',
+            telefono: '',
+            correo: '',
 		}
 	)
 
-	const crearServicio = async (e) => {
+	const crearCliente = async (e) => {
 		e.preventDefault();
-		// setServicio( prevState =>  ({...prevState, fechacreacion: formatDate(new Date(prevState.fechacreacion))}))
 		setSubmitting(true);
-		console.log(servicio,JSON.stringify(servicio))
+		console.log(cliente,JSON.stringify(cliente))
 
 		try {
 			const token = JSON.parse(localStorage.getItem('token'))
 			console.log(token)
-			await fetch('http://localhost:8085/servicio/create',
+			await fetch('http://localhost:8085/cliente/create',
 			{
 				method: 'POST',
 				headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 
-				body: JSON.stringify(servicio)
+				body: JSON.stringify(cliente)
 			})
 			.then( response =>  {
 				console.log('Status code:',response.status)
 				console.log('Status Text:',response.statusText) 
 				if ( response.status === 200 ){
-				  console.log('Servicio creado exitosamente')
-				  router.push('/components/Servicios')
+				  console.log('Cliente creado exitosamente')
+				  router.push('/components/Clientes')
 				} else {
-				  console.log('Error Servicio no creado')
+				  console.log('Error Cliente no creado')
 				}
 				return response.json();
 			})
@@ -53,12 +54,12 @@ export default function CrearServicio () {
 	}
 
 	return (
-		<FormCrearServicio
+		<FormCliente
 			type="Crear"
-			servicio={servicio}
-			setServicio={setServicio}
+			cliente={cliente}
+			setCliente={setCliente}
 			submitting={submitting}
-			handleSubmit={crearServicio}
+			handleSubmit={crearCliente}
 
 		/>
 	)
