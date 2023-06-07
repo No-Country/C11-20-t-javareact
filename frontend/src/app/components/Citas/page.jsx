@@ -1,10 +1,45 @@
-import Image from 'next/image'
-import Link from 'next/link'
+'use client'
 
-export default function Home() {
+import axios from 'axios'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import React from 'react'
+import Card from './Card'
+
+
+
+function Citas() {
+  const [estilistas, setEstilistas ] = useState([]);
+
+  const getEstilistas = () => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      }
+    }
+
+    axios.get('http://localhost:8085/estilista/lista', config)
+    .then((res) => {
+    setEstilistas(res.data); 
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+            
+  }
+
+  useEffect(() => {
+    getEstilistas();
+  }, [])
+
+
   return (
     <main className="bg-slate-100 grid grid-cols-10 gap-2 min-h-screen p-2">
-      <div className="bg-blue-700 rounded-sm p-4 col-span-2  border-purple-950">
+    
+        {/* <Home /> */}
+        <div className="bg-blue-700 rounded-sm p-4 col-span-2 border-purple-950 ">
         <nav>
           <ul>
             
@@ -61,27 +96,31 @@ export default function Home() {
 
           </ul>
         </nav>
-
-      </div>
-
-      <div className="bg-sky-100 rounded-xl col-span-8 border-purple-950 w-auto">
-        <div className='bg-black box-border h-full bg-cover bg-[url(../../public/images/proyecto.jpeg)]'>
-          <div className='h-full bg-cover bg-black/[.15]'>
-            <div className='w-1/2 text-white p-14'>
-              <h2 className='text-5xl font-bold'>Depilación Laser de Última Tecnología</h2>
-              <p className='mt-10 font-bold text-black'>
-                La depilación láser de diodo de última generación que tenemos en Depil & Esthetic es 
-                la tecnología avalada a nivel mundial por los estudios clínicos para depilación 
-                permanente, se hace uso de una luz unidireccional y monocromática lo que 
-                garantiza que va directa y únicamente a la melanina del vello atrofiando así el 
-                folículo piloso.
-              </p>
-            </div>
-          </div>
+        </div>
+        <div className='col-span-8 grid grid-cols-4 gap-5 ml-3'>
+        {
+          estilistas.map((estilista) => {
+            return (
+              <div>
+              <Card 
+                id={estilista.idestilista}
+                nombre={estilista.persona.nombre}
+                apellido={estilista.persona.apellido}
+                correo={estilista.persona.correo}
+                especialidad={estilista.especialidad}
+                disponibilidad={estilista.disponibilidad}
+              
+              />
+              </div>
+            )
+          } )
+        }
         </div>
 
-      </div>
 
-    </main>
+  
+      </main>
   )
 }
+
+export default Citas;

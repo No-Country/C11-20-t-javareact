@@ -4,7 +4,9 @@ import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import admin from '../../public/images/admin_av.png'
+import secretaria from '../../public/images/secretary.png'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +17,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
 
+  let [email, setEmail ] = useState('')
   let [user, setUser ] = useState([])
   let [isLogged, setIsLogged ] = useState(false)
 
@@ -29,6 +32,7 @@ export default function RootLayout({ children }) {
   const deleteToken = () => {
     setUser([]);
     JSON.parse(localStorage.removeItem(user));
+
   }
 
   useEffect(() => {
@@ -36,13 +40,16 @@ export default function RootLayout({ children }) {
     function existeUsuario(){
         if(JSON.parse(localStorage.getItem('token')) !== null){
           setIsLogged(true)
+          setEmail(localStorage.getItem('email'))
           user = JSON.parse(localStorage.getItem('token'));
           console.log(user);
 
         } else {
-          setIsLogged(false);
-          setUser([]);
-          console.log(user);
+          // setIsLogged(false);
+          // if(JSON.parse(localStorage.getItem('token')) !== null){
+            // setUser([]);
+          // }
+          // console.log(user);
           return;
 
         }
@@ -53,28 +60,6 @@ export default function RootLayout({ children }) {
     }
   }, [])
 
-
-
-const getAny = () => {
-  if(user !== []){
-    try {
-      let headers = {
-        "Content-Type": "application/json",
-        'Authorization': `Bearer ${user}`,
-      }
-      axios.get('http://localhost:8085/', headers)
-      .then((res) => {
-      console.log(res.data); 
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-      
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
 
      
   const cerrarSesion = () => {
@@ -93,8 +78,13 @@ const getAny = () => {
           <div className='grid grid-cols-2 bg-cyan-100 py-2 px-2 font-sans'>
             <nav className="flex flex-row items-center">
               <ul className="flex flex-row items-center justify-start space-x-3">
-                <li>LOGO</li>
-                <li className='italic bg-cyan-200 px-2 py-1 rounded-sm'>
+                <li>
+                <img 
+                    className='h-9 w-9 rounded-full -mb-[8px]' 
+                    src='https://thumbs.dreamstime.com/b/icono-de-vector-depilaci%C3%B3n-trazo-editable-s%C3%ADmbolo-lineal-para-uso-en-medios-impresos-con-logotipo-aplicaciones-web-y-m%C3%B3viles-186790025.jpg' 
+                    alt='logo' />
+                </li>
+                <li className='italic bg-cyan-200 px-2 py-1 rounded-sm mt-2'>
                   <Link href={'/'}>
                     Depil & Esthetic
                   </Link>
@@ -131,13 +121,22 @@ const getAny = () => {
                   :
                   <>
                   <li className='py-1 px-1 my-1 cursor-pointer bg-cyan-200 rounded-sm text-blue-600 hover:bg-blue-600 hover:text-sky-200 -mb-[8px]'>
-                   <a href='/login' onClick={deleteToken} onLog>Cerrar sesion</a>
+                   <a href='/login' onClick={deleteToken} onLog>Cerrar sesión</a>
                   </li>
                   <li className='py-1 px-1 my-1 cursor-pointer bg-transparent rounded-sm text-blue-600 hover:text-sky-200'>
-                   <img 
-                    className='h-9 w-9 rounded-full -mb-[8px]' 
-                    src='https://thumbs.dreamstime.com/b/icono-de-vector-depilaci%C3%B3n-trazo-editable-s%C3%ADmbolo-lineal-para-uso-en-medios-impresos-con-logotipo-aplicaciones-web-y-m%C3%B3viles-186790025.jpg' 
-                    alt='logo' />
+                    {
+                      email === 'admin@gmail.com'?
+                      <Image 
+                      className='h-9 w-9 rounded-full -mb-[8px]' 
+                      src={admin} 
+                      alt='logo' /> 
+                      :
+                      <Image 
+                      className='h-9 w-9 rounded-full -mb-[8px]' 
+                      src={secretaria} 
+                      alt='logo' />
+                    }
+                  
                   </li>
                  </>
                 }
