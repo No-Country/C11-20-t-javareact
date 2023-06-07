@@ -12,7 +12,7 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <a>Usuarios</a>
+              <Link href={'/components/Usuarios'}>Usuarios</Link>
             </li>
 
             <li className='py-2 px-1 my-1 bg-blue-700 rounded text-white hover:bg-blue-900 hover:text-sky-200 flex flex-row gap-3'>
@@ -26,7 +26,7 @@ export default function Home() {
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
               </svg>
-              <a>Clientes</a>
+              <Link href={'/components/Clientes'}>Clientes</Link>
             </li>
 
             <li className='py-2 px-1 my-1 bg-blue-700 rounded text-white hover:bg-blue-900 hover:text-sky-200 flex flex-row gap-3'>
@@ -51,17 +51,26 @@ export default function Home() {
               <a>Turnos</a>
             </li>
 
+            <li className='py-2 px-1 my-1 bg-blue-700 rounded text-white hover:bg-blue-900 hover:text-sky-200 flex flex-row gap-3'>
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+              </svg>
+              <Link href={'/components/Citas'}>Citas</Link>
+            </li>
+
           </ul>
         </nav>
 
       </div>
 
       <div className="bg-sky-100 rounded-xl col-span-8 border-purple-950 w-auto">
-        <div className='bg-black box-border h-full bg-cover bg-[url(../../public/images/piernas1.jpg)]'>
+        <div className='bg-black box-border h-full bg-cover bg-[url(../../public/images/proyecto.jpeg)]'>
           <div className='h-full bg-cover bg-black/[.15]'>
             <div className='w-1/2 text-white p-14'>
-              <h2 className='text-5xl'>Depilacion Laser de Ultima Tecnologia</h2>
-              <p>La depilación láser de diodo de última generación que tenemos en Depil & Esthetic es 
+              <h2 className='text-5xl font-bold'>Depilación Laser de Última Tecnología</h2>
+              <p className='mt-10 font-bold text-black'>
+                La depilación láser de diodo de última generación que tenemos en Depil & Esthetic es 
                 la tecnología avalada a nivel mundial por los estudios clínicos para depilación 
                 permanente, se hace uso de una luz unidireccional y monocromática lo que 
                 garantiza que va directa y únicamente a la melanina del vello atrofiando así el 

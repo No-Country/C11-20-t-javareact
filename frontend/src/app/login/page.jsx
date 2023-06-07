@@ -3,24 +3,7 @@
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-// import { admin } from '../utils/admin';
-// import loading from '../../../public/images/loading1.gif'
-import Image from 'next/image';
-
-
-
-// function ButtonContent() {
-//   return (
-//     <div className='grid grid-cols-2 gap-1'>
-//       <span id='text_button'>Login</span>
-//       <Image id='img_button' src={loading} className='hidden' alt='load' />
-//     </div>
-//   )
-// }
-
-
-
-
+// import Image from 'next/image';
 
 
 export default function Home() {
@@ -29,54 +12,29 @@ export default function Home() {
   const [password, setPassword] = useState("")
   const [enviar, setEnviar] = useState('Login')
   const [loginStatus, setLoginStatus ] = useState('')
-  // const [textButton, setTextButton] = useState('Login');
 
 
-
-//   function GFG_Fun() {
-//     let img = document.createElement('img');
-//     img.src ={loading};
-//     document.getElementById('body').appendChild(img);
-//     down.innerHTML = "Image Element Added.";
-// }
-
- 
   useEffect(() => {
     localStorage.clear()
   }, [])
 
 
-
   const login = (e, email, password) => {
     e.preventDefault();
     // let image = document.createElement('img');
+    const invalidEmail = document.getElementById('no_valid_email')
+    const rememberText = document.getElementById('remember')
+    const rememberCheck = document.getElementById('checkboxDefault')
+
+
     
-    const textButton = document.getElementById('text_button')
-    const imgButton = document.getElementById('img_button')
+    // // const imgButton = document.getElementById('img_button')
+    // if((email ==='' || email !== '') && (password === '' || password !== '')){
+    //   invalidEmail.setAttribute('class', 'text-sm text-red-600 text-left font-serif')
+      
+    // } 
 
-    setEnviar(imgButton)
-
-    // let n = document.createElement('img')
-    // n.src = loading
-    // n.setAttribute('class', 'h-10, w-10')
-    // let b = id_img.appendChild([n])
-
-    // setTextButton(b)
-    // let obtain = GFG_Fun();
-    // setTextButton(image)
-    // setTimeout(() => {
-    //   console.log('delayed for three seconds');
-    // }, 3000)
-
-    // setTextButton(loading)
-
-    // console.log(email);
-    // console.log(password);
-    let info = {
-      "correo":email,
-      "clave": password
-    };
-
+  // if(email == 'admin@gmail.com' && password == 123456){
     axios.post('http://localhost:8085/auth/login', 
     {
       "correo":email,
@@ -90,25 +48,34 @@ export default function Home() {
      
       if (res.data.token) {
         localStorage.setItem('token', JSON.stringify(res.data.token));
-          // window.open("/");
+        localStorage.setItem('email', email);
         location.replace('/')
 
         } 
         else {
+          return
           console.log('si');
-          let denegado = document.getElementById('accesod');
-          denegado.setAttribute('class', 'font-serif text-sm text-red-500');
+
           // denegado.innerText = 'Usuario no encontrado.'
         
         // setLoginStatus(console.log() )
       }
 
     }).catch((err) => {
-      console.log(err);
+      // console.log(err);
+      rememberCheck.setAttribute('class', 'mb-0 mt-0')
+      rememberText.setAttribute('class', 'inline-block pl-[0.15rem] hover:cursor-pointer mr-5 mb-0')
+      invalidEmail.setAttribute('class', 'text-sm text-red-600 text-left font-serif')
+      invalidEmail.innerText = 'Correo o contraseña no válidos.'
       // let denegado = document.getElementById('accesod')
       // denegado.setAttribute('class', 'font-serif text-sm text-red-500')
       // denegado.innerText = 'Usuario no autorizado.'
     })
+
+
+  // }
+ 
+    
 
   }
 
@@ -116,15 +83,16 @@ export default function Home() {
   return (
     <div className='mx-auto ml-[450px] mr-[450px] mt-[40px] '>
     {/* <h1>si</h1> */}
-    <div className='px-20 py-10 border rounded-md bg-white mb-2'>
-      <h1 className='font-serif text-2xl mb-2 mx-auto ml-[60px]'>Welcome to</h1>
+    <div className='px-20 py-10 border rounded-lg bg-white mb-2'>
+      <h1 className='font-serif text-2xl mb-2 mx-auto ml-[60px]'>Bienvenidos a</h1>
       <div className='mx-auto w-[80px] h-[80px]'>
         <img 
           src='https://thumbs.dreamstime.com/b/icono-de-vector-depilaci%C3%B3n-trazo-editable-s%C3%ADmbolo-lineal-para-uso-en-medios-impresos-con-logotipo-aplicaciones-web-y-m%C3%B3viles-186790025.jpg' 
           alt='logo'
           />
       </div>
-      <form onClick={(e) => login(e, email, password)}>
+      {/* onClick={(e) => login(e, email, password)} */}
+      <form >
         <p htmlFor='email' className='text-left font-serif font-bold' >Email: </p>
         <input 
           type="email" 
@@ -139,7 +107,7 @@ export default function Home() {
             email == 'repetido@gmail.com'? <p className=' text-red-600 text-xs font-serif text-left'>Ya existe otro usuario con esta cuenta</p> :
             <br />
           } */}
-        <p htmlFor='password'className='text-left font-serif font-bold mt-3'>Password: </p>
+        <p htmlFor='password'className='text-left font-serif font-bold mt-3'>Contraseña: </p>
         <input 
           type="password" 
           id="password" 
@@ -148,27 +116,26 @@ export default function Home() {
           onChange={(e) => setPassword(e.target.value)}  
           className='border rounded border-black py-2' 
           placeholder="**********" 
-        /><br /><br />
-
+        />
+       <p id='no_valid_email' className='text-sm text-red-600 text-left font-serif hidden'></p>
+      <br />
       <input
-        classNmae="ml-5 mb-4"
+        classNmae="ml-5 mb-4 mt-11"
         type="checkbox"
         value=""
         id="checkboxDefault" />
       <label
-        className="inline-block pl-[0.15rem] hover:cursor-pointer mr-5"
+        id='remember'
+        className="inline-block pl-[0.15rem] hover:cursor-pointer mr-5 mt-11"
         for="checkboxDefault">
         Remember me
       </label>
-      <input 
+      <button 
         id='button2'
         type='submit'
-        className='border rounded px-[105px] py-2 mt-8 bg-green-300 border-gray-400 hover:bg-green-200 text-white cursor-pointer font-bold'
-        value="Login"
-        />
-
-
-
+        className='border rounded px-[94px] py-2 mt-8 bg-green-300 border-gray-400 hover:bg-green-200 text-white cursor-pointer font-bold'
+          onClick={(e) => login(e, email, password)}
+        >Acceder</button>
     
       {/* <p id="accesop" className='font-serif'></p>
       <p id="accesod" className='font-serif text-sm text-red-500 hidden'>Usuario no encontrado</p> */}
