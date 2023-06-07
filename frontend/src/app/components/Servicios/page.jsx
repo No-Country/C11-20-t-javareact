@@ -1,10 +1,10 @@
-'use client';
+'use client'
 import Link from "next/link";
 import CambiaEstado from "./CambiarEstado/CambiarEstado";
 
 const fetchServicios = () => {
-  const token =  sessionStorage.getItem("token");
-  // const token =  "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiLCJST0xFX0FETUlOIl0sImlhdCI6MTY4NTkyOTA5OCwiZXhwIjoxNjg1OTMyNjk4fQ.cTuyn_qPL3MNW9FL82KGirRWIMmUXd4zIS2QQDNbsSMuLYxmP_KnjEv0WsX1IFgIoymuvrFdEeBdvvNi6JsPTw"
+  const token =  JSON.parse(localStorage.getItem('token'));
+  console.log('token',token);
   return fetch('http://localhost:8085/servicio/lista',
   {
     cache: "no-cache",
@@ -55,7 +55,7 @@ export default async function Servicios (id) {
                 <tbody>
                   {
                     servicios?.map(servicio => (
-                      <tr key={servicio.id} className="grid grid-cols-12">
+                      <tr key={servicio.idservicio} className="grid grid-cols-12">
                         <td className="border border-slate-200 col-span-3 px-2 py-1.5 text-left text-sm">{servicio.nombre}</td>
                         <td className="border border-slate-200 col-span-5 px-2 py-1.5 text-left text-sm">{servicio.descripcion}</td>
                         <td className="border border-slate-200 col-span-2 px-2 py-1.5 text-left text-sm">${servicio.precio}</td>

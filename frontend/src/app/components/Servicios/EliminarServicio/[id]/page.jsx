@@ -2,7 +2,7 @@
 import EliminarServicio from "./EliminarServicio";
 
 const fetchServicio = (id) => {
-  const token =  sessionStorage.getItem("token");
+  const token =  JSON.parse(localStorage.getItem('token'));
   return fetch('http://localhost:8085/servicio/detail/'+id,
   {
     method: 'GET',

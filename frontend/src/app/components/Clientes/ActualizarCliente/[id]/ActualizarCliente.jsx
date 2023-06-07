@@ -1,40 +1,42 @@
 'use client'
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import FormCrearServicio from '../../CrearServicio/FormCrearServicio';
+import FormCliente from '../../CrearCliente/FormCliente';
 
-export default function ActualizarServicio ({dataServicio}) {
+export default function ActualizarCliente ({dataCliente}) {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
-  const [servicio, setServicio] = useState(
+  const [cliente, setCliente] = useState(
     {
-      nombre: dataServicio.nombre,
-      descripcion: dataServicio.descripcion,
-      precio: dataServicio.precio,
-      estado: dataServicio.estado,
+      nombre: dataCliente.nombre,
+      apellido: dataCliente.apellido,
+      tipodocumento: dataCliente.tipodocumento,
+      numerodocumento: dataCliente.numerodocumento,
+      telefono: dataCliente.telefono,
+      correo: dataCliente.correo,
     }
   );
 
-  const actualizaServicio = async (e) => {
+  const actualizarCliente = async (e) => {
 		e.preventDefault();
 		setSubmitting(true);
-    console.log(servicio,JSON.stringify(servicio));
+    console.log(cliente,JSON.stringify(cliente));
 		try {
       const token =  JSON.parse(localStorage.getItem('token'));
-			await fetch('http://localhost:8085/servicio/update/'+dataServicio.idservicio,
+			await fetch('http://localhost:8085/cliente/update/'+dataCliente.idcliente,
 			{
 				method: 'PUT',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 
-				body: JSON.stringify(servicio)
+				body: JSON.stringify(cliente)
 			})
       .then( response =>  {
           console.log('Status code:',response.status)
           console.log('Status Text:',response.statusText) 
           if ( response.status === 200 ){
-            console.log('Servicio modificado exitosamente')
-            router.push('/components/Servicios')
+            console.log('Cliente modificado exitosamente')
+            router.push('/components/Clientes')
           } else {
-            console.log('Error Servicio no modificado')
+            console.log('Error Cliente no modificado')
           }
           return response.json();
       })
@@ -51,12 +53,12 @@ export default function ActualizarServicio ({dataServicio}) {
 
   return (
 
-    <FormCrearServicio
+    <FormCliente
     type="Modificar"
-    servicio={servicio}
-    setServicio={setServicio}
+    cliente={cliente}
+    setCliente={setCliente}
     submitting={submitting}
-    handleSubmit={actualizaServicio}
+    handleSubmit={actualizarCliente}
 
   />
   )

@@ -21,7 +21,7 @@ export default function EliminarServicio ({dataServicio}) {
     setSubmitting(true);
     console.log(servicio,JSON.stringify(servicio));
     try {
-      const token =  sessionStorage.getItem("token");
+      const token =  JSON.parse(localStorage.getItem('token'));
       await fetch('http://localhost:8085/servicio/delete/'+dataServicio.idservicio,
       {
         method: 'DELETE',
