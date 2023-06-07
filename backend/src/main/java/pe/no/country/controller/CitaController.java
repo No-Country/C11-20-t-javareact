@@ -100,6 +100,26 @@ public class CitaController {
 		Cita cita = citaService.getOne(id).get();
 		return new ResponseEntity(cita, HttpStatus.OK);
 	}
+	
+	@PreAuthorize("hasAnyRole('ADMIN','USER')")
+	@GetMapping("/citaxidestilista/{idestilista}")
+	public ResponseEntity<Cita> getCitaByIdEstilista(@PathVariable("idestilista") int idestilista) {
+
+		List<Cita> cita = citaService.obetnerCitaPorIdCliente(idestilista);
+
+		System.out.println("tamaño de la lista"+cita.size());
+		if (cita != null) {
+			if(cita.size()!=0) {
+				return new ResponseEntity(cita, HttpStatus.OK);
+			}else {
+				return new ResponseEntity("No hay citas programadas para el estilista", HttpStatus.OK);
+			}
+			
+		} else  {
+			return new ResponseEntity(new Mensaje("No hay citas "), HttpStatus.NO_CONTENT);
+		}
+
+	}
 
 	@PreAuthorize("hasAnyRole('ADMIN','USER')")
 	@GetMapping("/citaxestado/{estado}")

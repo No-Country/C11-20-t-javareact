@@ -13,4 +13,7 @@ public interface CitaRepository extends JpaRepository<Cita, Integer>{
 
 	@Query("SELECT c FROM Cita c WHERE c.estado = :estado")
 	List<Cita> citaPorEstado(@Param("estado") String estado);
+	
+	@Query("SELECT c FROM Cita c WHERE c.estilista.idestilista = ?1")
+	List<Cita> citaPorIdEstilista(@Param("idestilista") int idEstilista);
 }

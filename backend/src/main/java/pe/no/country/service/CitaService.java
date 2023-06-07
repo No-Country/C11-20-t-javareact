@@ -40,5 +40,9 @@ public class CitaService {
 	public List<Cita> obetnerCitaPorEstado(String estado) {
 		return citaRepository.citaPorEstado(estado);
 	}
+	public List<Cita> obetnerCitaPorIdCliente(int idEstilista) {
+		return citaRepository.citaPorIdEstilista(idEstilista);
+	}
+	
 }
 
