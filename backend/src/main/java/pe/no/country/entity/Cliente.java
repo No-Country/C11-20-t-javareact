@@ -23,8 +23,18 @@ public class Cliente {
     @Column(name = "apellido", length = 20, nullable = true)
     private String apellido;
 
+    @Column(name = "correo", length = 20, nullable = true)
+    private String correo;
+    
+    public String getCorreo() {
+		return correo;
+	}
 
-    @Column(name = "tipodocumento", length = 20, nullable = true)
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	@Column(name = "tipodocumento", length = 20, nullable = true)
     private String tipodocumento;
 
     @Column(name = "numdocumento", nullable = true)
@@ -32,17 +42,22 @@ public class Cliente {
 
     @Column(name = "telefono", nullable = true)
     public int telefono;
+    
+    
 
-    public Cliente() {
-    }
+    public Cliente( String nombre, String apellido, String correo, String tipodocumento,
+			int numerodocumento, int telefono) {
+		
+		
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.correo = correo;
+		this.tipodocumento = tipodocumento;
+		this.numerodocumento = numerodocumento;
+		this.telefono = telefono;
+	}
 
-    public Cliente(String nombre, String apellido, String tipodocumento,
-            int numerodocumento, int telefono) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.tipodocumento = tipodocumento;
-        this.numerodocumento = numerodocumento;
-        this.telefono = telefono;
+	public Cliente() {
     }
 
     public static long getSerialversionuid() {

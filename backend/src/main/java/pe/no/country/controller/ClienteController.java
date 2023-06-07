@@ -45,7 +45,7 @@ public class ClienteController {
         if (StringUtils.isBlank(clienteEnt.getNombre()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
 
-        Cliente cliente = new Cliente(clienteEnt.getNombre(), clienteEnt.getApellido(), clienteEnt.getTipodocumento(),
+        Cliente cliente = new Cliente(clienteEnt.getNombre(), clienteEnt.getApellido(),clienteEnt.getCorreo(), clienteEnt.getTipodocumento(),
                 clienteEnt.getNumerodocumento(), clienteEnt.getTelefono());
         clienteService.save(cliente);
         return new ResponseEntity(new Mensaje("cliente creado"), HttpStatus.OK);
@@ -63,6 +63,7 @@ public class ClienteController {
         Cliente cliente = clienteService.getOne(id).get();
         cliente.setNombre(clienteEnt.getNombre());
         cliente.setApellido(clienteEnt.getApellido());
+        cliente.setCorreo(clienteEnt.getCorreo());
         cliente.setTipodocumento(clienteEnt.getTipodocumento());
         cliente.setNumerodocumento(clienteEnt.getNumerodocumento());
         cliente.setTelefono(clienteEnt.getTelefono());
