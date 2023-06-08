@@ -2,8 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 // import pierna from '../../../../public/images/piernas1.jpg'
-import peluquero_uno from '../../../../public/images/peluquero2.jpeg'
-import peluquero_dos from '../../../../public/images/peluquero1.jpeg'
+import peluquera from '../../../../public/images/peluquera1.jpg'
+import manicurista from '../../../../public/images/manicurista.png'
+import depilacion from '../../../../public/images/peluquero1.jpeg'
+import capilar from '../../../../public/images/capilar.jpg'
+
 
 
 
@@ -13,13 +16,13 @@ function Card(props) {
     <div className="max-w-[450px] bg-white border border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
           <Image 
             className="rounded-t-lg w-[250px] h-[160px]" 
-            src={props.id == 1? peluquero_uno : peluquero_dos} 
+            src={props.id == 1? peluquera : props.id == 2? manicurista :  props.id == 3? depilacion : capilar} 
             alt="estilista" 
           />
         <div className="h-72 bg-gradient-to-r from-purple-200 to-blue-200 rounded-b-lg ">
           <br />
           <h5 className="mb-0 text-lg font-bold tracking-tight text-gray-900 dark:text-white text-center">
-            {props.nombre} {props.apellido}
+            {props.nombre} {props.apellido.slice(0, 6) === 'Aragon'? props.apellido.slice(0, 6) : props.apellido }
           </h5>
           <h5 className="mb-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
             {props.especialidad} 
