@@ -35,7 +35,7 @@ export default function EliminarUsuario ({dataUsuario}) {
     console.log(usuario,JSON.stringify(usuario));
 		try {
       const token =  sessionStorage.getItem("token");
-			await fetch('http://localhost:8085/auth/delete/'+usuario.idpersona,
+			await fetch('https://backendstyle.onrender.com/auth/delete/'+usuario.idpersona,
 			{
 				method: 'DELETE',
 				headers: {'Content-Type': 'application/json'}, 

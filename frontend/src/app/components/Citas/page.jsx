@@ -20,7 +20,7 @@ function Citas() {
       }
     }
 
-    axios.get('http://localhost:8085/estilista/lista', config)
+    axios.get('https://backendstyle.onrender.com/estilista/lista', config)
     .then((res) => {
     setEstilistas(res.data); 
     })

@@ -31,7 +31,7 @@ const ContactUs = () => {
       }
     }
     try {
-      const detail = await axios.get(`http://localhost:8085/cita/detail/${id}`, config)
+      const detail = await axios.get(`https://backendstyle.onrender.com/cita/detail/${id}`, config)
       const res = await detail.data
       setCita(res);
       return

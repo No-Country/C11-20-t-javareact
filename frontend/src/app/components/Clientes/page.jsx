@@ -5,7 +5,7 @@ import Link from "next/link";
 const fetchClientes = () => {
   const token =  JSON.parse(localStorage.getItem('token'));
   console.log('token',token);
-  return fetch('http://localhost:8085/cliente/lista',
+  return fetch('https://backendstyle.onrender.com/cliente/lista',
   {
     cache: "no-cache",
     method: 'GET',

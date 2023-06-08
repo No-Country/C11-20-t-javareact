@@ -3,7 +3,7 @@ import ActualizarServicio from "./ActualizarServicio";
 
 const fetchServicio = (id) => {
   const token =  JSON.parse(localStorage.getItem('token'));
-  return fetch('http://localhost:8085/servicio/detail/'+id,
+  return fetch('https://backendstyle.onrender.com/servicio/detail/'+id,
   {
     method: 'GET',
     headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 

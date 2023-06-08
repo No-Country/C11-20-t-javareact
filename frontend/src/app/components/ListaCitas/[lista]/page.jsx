@@ -23,7 +23,7 @@ function ListaCitas() {
       }
     }
     try {
-      const detail = await axios.get(`http://localhost:8085/cita/citaxidestilista/${id}`, config)
+      const detail = await axios.get(`https://backendstyle.onrender.com/cita/citaxidestilista/${id}`, config)
       const res = await detail.data
       setLista(res);
       
@@ -42,7 +42,7 @@ function ListaCitas() {
         'Authorization': 'Bearer ' + token 
       }
     }
-    axios.delete('http://localhost:8085/cita/delete/' + id, config)
+    axios.delete('https://backendstyle.onrender.com/cita/delete/' + id, config)
     .then(res => console.log(res))
     .catch(err => console.log(err))
   }

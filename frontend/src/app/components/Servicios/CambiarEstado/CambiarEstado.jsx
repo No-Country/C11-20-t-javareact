@@ -21,7 +21,7 @@ export default function CambiaEstado ({id}) {
   const cambiaEstado = async (e,id) => {
     e.preventDefault();
     try {
-      let respuesta = await fetch('http://localhost:8085/servicio/estado/'+ id,
+      let respuesta = await fetch('https://backendstyle.onrender.com/servicio/estado/'+ id,
       {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'}, 

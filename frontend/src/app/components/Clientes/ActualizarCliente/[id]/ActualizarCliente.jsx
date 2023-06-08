@@ -23,7 +23,7 @@ export default function ActualizarCliente ({dataCliente}) {
     console.log(cliente,JSON.stringify(cliente));
 		try {
       const token =  JSON.parse(localStorage.getItem('token'));
-			await fetch('http://localhost:8085/cliente/update/'+dataCliente.idcliente,
+			await fetch('https://backendstyle.onrender.com/cliente/update/'+dataCliente.idcliente,
 			{
 				method: 'PUT',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 

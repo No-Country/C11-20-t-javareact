@@ -22,7 +22,7 @@ export default function EliminarServicio ({dataServicio}) {
     console.log(servicio,JSON.stringify(servicio));
     try {
       const token =  JSON.parse(localStorage.getItem('token'));
-      await fetch('http://localhost:8085/servicio/delete/'+dataServicio.idservicio,
+      await fetch('https://backendstyle.onrender.com/servicio/delete/'+dataServicio.idservicio,
       {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 

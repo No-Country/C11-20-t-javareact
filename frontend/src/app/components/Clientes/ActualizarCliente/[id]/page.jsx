@@ -3,7 +3,7 @@ import ActualizarCliente from "./ActualizarCliente";
 
 const fetchServicio = (id) => {
   const token =  JSON.parse(localStorage.getItem('token'));
-  return fetch('http://localhost:8085/cliente/detail/'+id,
+  return fetch('https://backendstyle.onrender.com/cliente/detail/'+id,
   {
     method: 'GET',
     headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 

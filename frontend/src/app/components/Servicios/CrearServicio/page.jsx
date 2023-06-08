@@ -24,7 +24,7 @@ export default function CrearServicio () {
 		try {
 			const token = JSON.parse(localStorage.getItem('token'))
 			console.log(token)
-			await fetch('http://localhost:8085/servicio/create',
+			await fetch('https://backendstyle.onrender.com/servicio/create',
 			{
 				method: 'POST',
 				headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 

@@ -47,7 +47,7 @@ export default function Home() {
       method: 'POST',
       body: formData
     }
-    axios.post('http://localhost:8085/auth/lista', requestOptions).then(response => {
+    axios.post('https://backendstyle.onrender.com/auth/lista', requestOptions).then(response => {
       if (response.data.message) {
         setRegisterStatus(response.data.message)
       } else {

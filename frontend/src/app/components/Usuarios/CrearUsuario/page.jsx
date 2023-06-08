@@ -24,7 +24,7 @@ export default function CrearUsuario () {
     console.log(usuario,JSON.stringify(usuario));
 		try {
       const token =  sessionStorage.getItem("token");
-			await fetch('http://localhost:8085/auth/nuevo',
+			await fetch('https://backendstyle.onrender.com/auth/nuevo',
 			{
 				method: 'POST',
 				headers: {'Content-Type': 'application/json'}, 

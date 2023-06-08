@@ -21,7 +21,7 @@ function ListaEstilista() {
       }
     }
     try {
-      const detail = await axios.get(`http://localhost:8085/estilista/lista`, config)
+      const detail = await axios.get(`https://backendstyle.onrender.com/estilista/lista`, config)
       const res = await detail.data
       setListaEstilista(res);
       
@@ -40,7 +40,7 @@ function ListaEstilista() {
         'Authorization': 'Bearer ' + token 
       }
     }
-    axios.delete('http://localhost:8085/estilista/delete/' + id, config)
+    axios.delete('https://backendstyle.onrender.com/estilista/delete/' + id, config)
     .then(res => console.log(res))
     .catch(err => console.log(err))
   }

@@ -47,7 +47,7 @@ const today = new Date()
             "idestilista": detail.idestilista
         }
     }
-    axios.post('http://localhost:8085/cita/create', data, config)
+    axios.post('https://backendstyle.onrender.com/cita/create', data, config)
     .then(res => alert('Se agendó una nueva cita!'))
     .catch(err => alert('No se pudo agregar una nueva cita'))
   }
@@ -63,7 +63,7 @@ const today = new Date()
       }
     }
     try {
-      const detail = await axios.get(`http://localhost:8085/estilista/detail/${id}`, config)
+      const detail = await axios.get(`https://backendstyle.onrender.com/estilista/detail/${id}`, config)
       const res = await detail.data
       setDetail(res);
       
@@ -83,7 +83,7 @@ const today = new Date()
       }
     }
     try {
-      const detail = await axios.get(`http://localhost:8085/cliente/lista`, config)
+      const detail = await axios.get(`https://backendstyle.onrender.com/cliente/lista`, config)
       const res = await detail.data
       setClients(res);
       console.log(clients);
