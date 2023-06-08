@@ -1,15 +1,53 @@
 "use client"
 
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
-
+import { usePathname } from 'next/navigation';
+import axios from 'axios';
 
 
 
 const ContactUs = () => {
   const form = useRef();
+  const pathname = usePathname();
+  const id = pathname.slice(18, pathname.length);
+  const [ cita, setCita ] = useState("");
+  const [name, setName] = useState( "");
+  const [mail, setMail] = useState( "");
+
+
+  // console.log(id);
+
+
+  const getDetalleCita = async () => {
+
+    const token = JSON.parse(localStorage.getItem('token'));
+    const config = {
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + token 
+      }
+    }
+    try {
+      const detail = await axios.get(`http://localhost:8085/cita/detail/${id}`, config)
+      const res = await detail.data
+      setCita(res);
+      return
+      
+    } catch (error) {
+      // setLista([])
+      console.log(error);
+
+    }
+
+  }
+
+  useEffect(() => {
+    getDetalleCita()
+  })
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -90,12 +128,31 @@ const ContactUs = () => {
       <br />
       <br />
       <label className='font-bold font-serif'>Nombre:</label>
-      <input type="text" className='w-[450px] border rounded  py-1' name="user_name" /><br />
+      <input 
+        type="text" 
+        className='w-[450px] border rounded  py-1' 
+        name="user_name" 
+        value={name === ""? cita.cliente?.nombre + ' ' + cita.cliente?.apellido : cita.cliente?.nombre !== ''? name : ''  } 
+        onChange={(e) => setName(e.target.value)}
+      />
+      <br />
       <label className='font-bold font-serif'>Correo:</label>
-      <input type="email" className='w-[450px] border rounded  py-1' name="user_email" /><br />
+      <input 
+        type="email" 
+        className='w-[450px] border rounded  py-1' 
+        name="user_email" 
+        value={mail} 
+        onChange={(e) => setMail(e.target.value)}
+
+      />
+      <br />
       <label className='font-bold font-serif'>Mensaje:</label>
       <textarea name="message" className='w-[450px] h-[150px] border rounded'/><br />
-      <input type="submit" className='bg-green-500 px-[200px] text-white font-bold font-serif border rounded mt-3 py-2 cursor-pointer hover:bg-green-300' value="Enviar" />
+      <input 
+        type="submit" 
+        className='bg-green-500 px-[200px] text-white font-bold font-serif border rounded mt-3 py-2 cursor-pointer hover:bg-green-300' 
+        value="Enviar" 
+      />
     </form>
 
     </div>

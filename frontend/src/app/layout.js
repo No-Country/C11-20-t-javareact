@@ -1,4 +1,5 @@
 "use client"
+
 import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
@@ -26,9 +27,10 @@ export default function RootLayout({ children }) {
 
   const deleteToken = () => {
     setUser([]);
-    JSON.parse(localStorage.removeItem(user));
-
+    setIsLogged(false)
+    // localStorage.removeItem(user);
   }
+
 
   useEffect(() => {
     try {
@@ -40,13 +42,8 @@ export default function RootLayout({ children }) {
           console.log(user);
 
         } else {
-          // setIsLogged(false);
-          // if(JSON.parse(localStorage.getItem('token')) !== null){
-            // setUser([]);
-          // }
-          // console.log(user);
-          return;
 
+          return;
         }
       } 
       existeUsuario();

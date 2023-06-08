@@ -97,7 +97,7 @@ function Citas() {
           </ul>
         </nav>
         </div>
-        <div className='col-span-8 grid grid-cols-4 gap-5 ml-3'>
+        <div className='col-span-8 grid grid-cols-4 gap-5 ml-3 mt-14'>
         {
           estilistas.map((estilista) => {
             return (
