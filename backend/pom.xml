@@ -11,7 +11,7 @@
 	<groupId>pe.no.country</groupId>
 	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>backend</name>
 	<description>Plataforma de gestión de clientes, stock y turnos para dueños. Esta plataforma irá destinada tanto para un administrador central, el cual también tendrán acceso los dueños pero en el panel o dashboard tendrán un rol y ese rol será asignado por el super admin</description>
 	<properties>
