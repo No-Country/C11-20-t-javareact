@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pe.no.country.BackendApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.109 s - in pe.no.country.BackendApplicationTests
