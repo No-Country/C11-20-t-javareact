@@ -84,7 +84,7 @@ export default function Home() {
     <div className='mx-auto ml-[450px] mr-[450px] mt-[40px] '>
     {/* <h1>si</h1> */}
     <div className='px-20 py-10 border rounded-lg bg-white mb-2'>
-      <h1 className='font-serif text-2xl mb-2 mx-auto ml-[60px]'>Bienvenidos a</h1>
+      <h1 className='font-serif text-2xl mb-2 mx-auto ml-[60px] text-black'>Bienvenidos a</h1>
       <div className='mx-auto w-[80px] h-[80px]'>
         <img 
           src='https://thumbs.dreamstime.com/b/icono-de-vector-depilaci%C3%B3n-trazo-editable-s%C3%ADmbolo-lineal-para-uso-en-medios-impresos-con-logotipo-aplicaciones-web-y-m%C3%B3viles-186790025.jpg' 
@@ -93,7 +93,7 @@ export default function Home() {
       </div>
       {/* onClick={(e) => login(e, email, password)} */}
       <form >
-        <p htmlFor='email' className='text-left font-serif font-bold text-black' >Email: </p>
+        <p htmlFor='email' className='text-left font-serif font-bold text-black ' >Email: </p>
         <input 
           type="email" 
           id="email" 
@@ -101,32 +101,32 @@ export default function Home() {
           value={email} 
           // onClick={(e)=> e.preventDefault()}
           onChange={(e) => setEmail(e.target.value)} 
-          className='border rounded border-black py-2' 
+          className='border rounded border-black py-2 text-black' 
           placeholder="ej. example@gmail.com" /><br />
           {/* {
             email == 'repetido@gmail.com'? <p className=' text-red-600 text-xs font-serif text-left'>Ya existe otro usuario con esta cuenta</p> :
             <br />
           } */}
-        <p htmlFor='password'className='text-left font-serif font-bold mt-3'>Contraseña: </p>
+        <p htmlFor='password'className='text-left font-serif font-bold mt-3 text-black'>Contraseña: </p>
         <input 
           type="password" 
           id="password" 
           name="password" 
           value={password} 
           onChange={(e) => setPassword(e.target.value)}  
-          className='border rounded border-black py-2' 
+          className='border rounded border-black py-2 text-black' 
           placeholder="**********" 
         />
        <p id='no_valid_email' className='text-sm text-red-600 text-left font-serif hidden'></p>
       <br />
       <input
-        classNmae="ml-5 mb-4 mt-11"
+        className="ml-5 mb-4 mt-11"
         type="checkbox"
         value=""
         id="checkboxDefault" />
       <label
         id='remember'
-        className="inline-block pl-[0.15rem] hover:cursor-pointer mr-5 mt-11"
+        className="inline-block pl-[0.15rem] hover:cursor-pointer mr-5 mt-1 text-black"
         for="checkboxDefault">
         Remember me
       </label>
@@ -141,7 +141,7 @@ export default function Home() {
       <p id="accesod" className='font-serif text-sm text-red-500 hidden'>Usuario no encontrado</p> */}
 
       </form><br />
-      <span className='font-serif text-xs ml-3'>No tienes una cuenta todavía? <Link href="/register" className='text-left text-blue-900'>Regístrate aquí</Link></span>
+      <span className='font-serif text-xs ml-3 text-black'>No tienes una cuenta todavía? <Link href="/register" className='text-left text-blue-900'>Regístrate aquí</Link></span>
 
       </div>
 
