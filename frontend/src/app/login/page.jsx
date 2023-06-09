@@ -93,7 +93,7 @@ export default function Home() {
       </div>
       {/* onClick={(e) => login(e, email, password)} */}
       <form >
-        <p htmlFor='email' className='text-left font-serif font-bold' >Email: </p>
+        <p htmlFor='email' className='text-left font-serif font-bold text-black' >Email: </p>
         <input 
           type="email" 
           id="email" 
