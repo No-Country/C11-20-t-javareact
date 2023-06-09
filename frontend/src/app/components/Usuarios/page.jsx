@@ -3,7 +3,7 @@ import Link from "next/link";
 // import CambiaEstado from "./CambiarEstado/CambiarEstado";
 
 const fetchUsuarios = () => {
-  return fetch('http://localhost:8085/auth/lista',{cache: "no-cache"})
+  return fetch('https://backendstyle.onrender.com/auth/lista',{cache: "no-cache"})
   .then(res => res.json())
 }
 

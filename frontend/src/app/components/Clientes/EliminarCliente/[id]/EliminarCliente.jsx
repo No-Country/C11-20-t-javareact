@@ -23,7 +23,7 @@ export default function EliminarCliente ({dataCliente}) {
     console.log(cliente,JSON.stringify(cliente));
 		try {
       const token =  JSON.parse(localStorage.getItem('token'));
-			await fetch('http://localhost:8085/cliente/delete/'+dataCliente.idcliente,
+			await fetch('https://backendstyle.onrender.com/cliente/delete/'+dataCliente.idcliente,
 			{
 				method: 'DELETE',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 

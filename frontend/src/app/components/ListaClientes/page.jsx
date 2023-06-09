@@ -21,7 +21,7 @@ function ListaClientes() {
       }
     }
     try {
-      const detail = await axios.get(`http://localhost:8085/cliente/lista`, config)
+      const detail = await axios.get(`https://backendstyle.onrender.com/cliente/lista`, config)
       const res = await detail.data
       setListaClientes(res);
       
@@ -40,7 +40,7 @@ function ListaClientes() {
         'Authorization': 'Bearer ' + token 
       }
     }
-    axios.delete('http://localhost:8085/cliente/delete/' + id, config)
+    axios.delete('https://backendstyle.onrender.com/cliente/delete/' + id, config)
     .then(res => console.log(res))
     .catch(err => console.log(err))
   }

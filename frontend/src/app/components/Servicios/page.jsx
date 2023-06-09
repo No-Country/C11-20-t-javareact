@@ -5,7 +5,7 @@ import CambiaEstado from "./CambiarEstado/CambiarEstado";
 const fetchServicios = () => {
   const token =  JSON.parse(localStorage.getItem('token'));
   console.log('token',token);
-  return fetch('http://localhost:8085/servicio/lista',
+  return fetch('https://backendstyle.onrender.com/servicio/lista',
   {
     cache: "no-cache",
     method: 'GET',

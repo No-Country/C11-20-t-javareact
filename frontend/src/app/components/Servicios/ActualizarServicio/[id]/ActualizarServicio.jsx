@@ -21,7 +21,7 @@ export default function ActualizarServicio ({dataServicio}) {
     console.log(servicio,JSON.stringify(servicio));
 		try {
       const token =  JSON.parse(localStorage.getItem('token'));
-			await fetch('http://localhost:8085/servicio/update/'+dataServicio.idservicio,
+			await fetch('https://backendstyle.onrender.com/servicio/update/'+dataServicio.idservicio,
 			{
 				method: 'PUT',
         headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, 

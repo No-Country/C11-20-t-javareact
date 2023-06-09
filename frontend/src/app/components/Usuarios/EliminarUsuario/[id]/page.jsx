@@ -1,7 +1,7 @@
 import EliminarUsuario from "./EliminarUsuario";
 
 const fetchUsuario = (id) => {
-  return fetch('http://localhost:8085/auth/detail/'+id, {cache: "no-store"})
+  return fetch('https://backendstyle.onrender.com/auth/detail/'+id, {cache: "no-store"})
   .then( resp => resp.json())
   .catch( error => console.log(error))
 }

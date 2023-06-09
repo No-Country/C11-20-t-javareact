@@ -35,7 +35,7 @@ export default function ActualizarUsuario ({dataUsuario}) {
     console.log(usuario,JSON.stringify(usuario));
 		try {
       const token =  sessionStorage.getItem("token");
-			await fetch('http://localhost:8085/auth/update/'+usuario.idpersona,
+			await fetch('https://backendstyle.onrender.com/auth/update/'+usuario.idpersona,
 			{
 				method: 'PUT',
 				headers: {'Content-Type': 'application/json'}, 
